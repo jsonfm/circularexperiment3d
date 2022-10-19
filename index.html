@@ -1,31 +1,133 @@
 <html>
   <head>
-    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-    <script src="./js/main.js" ></script>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script>
+    <!-- <script src="./js/main.js" ></script> -->
+    <script src="./js/env.js"></script>
+    <link rel="stylesheet" href="./css/styles.css">
+    <title>MCU 3D</title>
   </head>
   <body>
-    <a-scene background="color: #ECECEC">
+
+    <a-assets>
+      <img
+        id="logo"
+        src="https://www.rimotolabs.com.ec/web/image/2887-1398fd93/Mesa%20de%20trabajo%201.png"
+      />
+    </a-assets>
+
+    <a-scene background="color: #202020" renderer="antialias: true" cursor="rayOrigin: mouse"
+    device-orientation-permission-ui raycaster stage-env
+    >
      <a-sky color="#303030"></a-sky>
      <a-entity rotation="0 0 0" animation="property: rotation; to: 0 0 360; loop: true; dur: 1000; easing: linear;">
-        <a-sphere position="0 1.5 -5" radius=".25"  color="mediumseagreen"></a-sphere>
+        <a-sphere position="0 1.5 -5" radius=".25"  color="#E8572A"></a-sphere>
     </a-entity>
 
-    <a-plane position="0 -2 -4" rotation="-90 0 0" width="30" height="30" color="#555" shadow></a-plane>
-    <a-circle position="0 0.5 -5" rotation="0 0 0" color="mediumseagreen" wireframe="true" wireframe-linewidth="4"></a-circle>
-
-    <a-entity
-        id="info"
-        geometry="primitive: plane;"
-        position="2 1 -4"
-        rotation="0 -10 0"
-        material="color: #202020"
+    <a-plane position="0 -2 -5" rotation="-90 0 0" width="30" height="30" color="#555" shadow></a-plane>
+    <!-- <a-circle position="0 0.5 -5" rotation="0 0 0" color="#404040" wireframe="false" wireframe-linewidth="4"></a-circle> -->
+    <a-gui-progressbar 
+    width="3" height="0.25"
+    margin="0 0 0.05 0"
+    position="3 4 -4.5" 
+    rotation="0 -20 0"
+    background-color="#151515"
+  >
+  </a-gui-progressbar>
+    <a-gui-flex-container 
+      flex-direction="column" 
+      justify-content="center" 
+      align-items="normal" 
+      component-padding="0.1" 
+      opacity="0.7"
+      width="3.5"
+      height="4.5"
+      panel-color="#151515"
+      panel-rounded="0.2"
+      position="3 1 -4.5" 
+      rotation="0 -20 0"
     >
-        <a-entity
-            id="Quiz" 
-            position="0 -0.04 0.001"
-            text="value: Hola mundo "
-        
-        ></a-entity>
-    </a-entity>
+          <a-gui-label
+          width="2.5" 
+          height="0.75"
+          value="¿Es la velocidad de la partícula constante?"
+          font-size="0.18"
+          line-height="1"
+          letter-spacing="0"
+          margin="0 0 0.05 0"
+          font-color="white"
+          opacity="0"
+        >
+        </a-gui-label>
+    
+      <!-- <a-image
+        width="2.5" 
+        height="0.75"
+        src="#logo"
+      ></a-image> -->
+
+      <a-gui-radio
+        id="m1-q1-a1"
+        width="1.8" 
+        height="0.5"
+        active-color="#14ffec"
+        value="Verdadero" 
+        ative="false"
+        checked="false"
+        font-size="0.12" 
+        margin="0 0 .1 0"
+      >
+      </a-gui-radio>
+      <a-gui-radio
+        id="m1-q1-a1"
+        width="1.8" 
+        height="0.5"
+        active-color="#14ffec"
+        value="False" 
+        ative="false"
+        checked="false"
+        font-size="0.12" 
+        margin="0 0 0.1 0"
+      >
+      </a-gui-radio>
+
+      <a-gui-button
+        width=".65" 
+        height="0.65"
+        margin="0 0 0.1 0"
+        base-depth="0.00"
+        font-size="0.15"
+        background-color="#E8572A"
+        font-color="white"
+        border-width="0"
+        bevel="false"
+        bevel-thickness="0"
+        value=">>"   
+      >
+      </a-gui-button>
+    </a-gui-flex-container>
+    <a-gui-circle-loader
+      height="0.75"
+      font-family="./assets/fonts/Plaster-Regular.ttf"					
+      font-size="0.2"
+      loaded="0.3456"		
+      margin="0 0 0.1 0"
+      background-color="#999"
+      position="-3 0 -4.5"
+    ></a-gui-circle-loader>	
+
+    <a-gui-slider 	
+      width="2.5" 
+      height="0.75"
+      percent="1"
+      margin="0 0 0.05 0"
+      position="-3.5 2 -4.5"
+      slider-bar-depth="0.01"
+      background-color="#fffffff"
+      opacity="1"
+      color="#E8572A2"
+      onclick="sliderHandle"
+    ></a-gui-slider>
+    <script type="text/javascript" src="./js/main.js"></script>
   </body>
 </html>
